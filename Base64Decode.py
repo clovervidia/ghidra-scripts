@@ -1,6 +1,7 @@
-#Base64 decodes the currently selected string and adds the decoded string as an EOL comment
+#Base64 decodes the currently selected string and adds the decoded string as a repeatable comment
 #@author clover v.
 #@category Strings
+#@toolbar B.gif
 
 import base64
 from ghidra.program.model.listing import CodeUnit
@@ -30,9 +31,9 @@ def main():
 		print("Couldn't Base64 decode {}.".format(b64_string))
 		return
 
-	# Print out the original string as well as the decoded string, and write the decoded string to an EOL comment.
+	# Print out the original string as well as the decoded string, and write the decoded string to a repeatable comment.
 	print('{} -> "{}"'.format(b64_string, decoded_string))
-	listing.setComment(b64_string_address, CodeUnit.EOL_COMMENT, decoded_string)
+	listing.setComment(b64_string_address, CodeUnit.REPEATABLE_COMMENT, decoded_string)
 
 if __name__ == "__main__":
 	main()
